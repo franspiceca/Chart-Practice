@@ -58,7 +58,8 @@ def createCorrelationPlot(df):
     plt.show()
     
 createCorrelationPlot(df[["CENTLIB", "BRANLIB", "BKMOB", "TOTSTAFF"]])
-    
+
+##Charts with seaborn
 import seaborn as sns
 
 sns.lmplot(x='CENTLIB', y='TOTINCM', data=df)
@@ -68,3 +69,7 @@ sns.jointplot(x='CENTLIB', y='TOTINCM', data=df2)
 sns.lmplot(x='POPU_ST', y='TOTINCM', data=df)
 
 sns.lmplot(x='TOTSTAFF', y='TOTINCM', data=df)
+
+##Charts with plotly
+fig = px.histogram(df[["TOTSTAFF", "TOTINCM"]], nbins=10)
+fig.show()
