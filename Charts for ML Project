@@ -30,11 +30,13 @@ from matplotlib.pyplot import figure
 import plotly.express as px
 import plotly.offline as plyo
 
+#Histograms with matplotlib
 df[["CENTLIB", "BRANLIB", "BKMOB"]].plot(kind="hist", grid=True, figsize=(15,7))
 
 fig = px.histogram(df[["CENTLIB", "BRANLIB", "BKMOB"]], nbins=10)
 fig.show()
 
+##Correlation heatmaps
 def createCorrelationPlot(df):
     sns.set(style="dark")
     # Compute the correlation matrix
@@ -59,6 +61,30 @@ def createCorrelationPlot(df):
     
 createCorrelationPlot(df[["CENTLIB", "BRANLIB", "BKMOB", "TOTSTAFF"]])
 
+def createCorrelationPlot(df):
+    sns.set(style="dark")
+    # Compute the correlation matrix
+    corr = df.corr()
+
+    # Generate a mask for the upper triangle
+    mask = np.triu(np.ones_like(corr, dtype=np.bool))
+
+    # Set up the matplotlib figure
+    f, ax = plt.subplots(figsize=(11, 9))
+
+    # Generate a custom diverging colormap
+    cmap = sns.diverging_palette(220, 10, as_cmap=True)
+
+    # Draw the heatmap with the mask and correct aspect ratio
+    sns.heatmap(df.corr()
+                ,mask=np.triu(np.ones_like(df.corr(), dtype=np.bool))
+                ,cmap=sns.diverging_palette(220, 10, as_cmap=True)
+                ,vmax=.3, center=0
+                ,square=True, linewidths=.5, cbar_kws={"shrink": .5})
+    plt.show()
+    
+createCorrelationPlot(df[["CENTLIB", "TOTINCM", "TOTSTAFF"]])
+
 ##Charts with seaborn
 import seaborn as sns
 
@@ -72,4 +98,7 @@ sns.lmplot(x='TOTSTAFF', y='TOTINCM', data=df)
 
 ##Charts with plotly
 fig = px.histogram(df[["TOTSTAFF", "TOTINCM"]], nbins=10)
+fig.show()
+
+fig = px.histogram(df[["TOTSTAFF", "CENTLIB", "TOTINCM"]], nbins=20)
 fig.show()
