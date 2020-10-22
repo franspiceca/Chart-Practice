@@ -102,3 +102,15 @@ fig.show()
 
 fig = px.histogram(df[["TOTSTAFF", "CENTLIB", "TOTINCM"]], nbins=20)
 fig.show()
+
+##Seaborn with bolumn combining
+df['TOTAL_LIB']=df['CENTLIB'] + df['BRANLIB'] + df['BKMOB']
+
+t1 = sns.lmplot(x='TOTAL_LIB', y='TOTINCM', data=df)
+t1.set(xlabel='Total Libraries', ylabel='Total Income', title='Total Libraries vs Total Income')
+
+t2 = sns.lmplot(x='TOTAL_LIB', y='POPU_ST', data=df)
+t2.set(xlabel='Total Libraries', ylabel='State Population', title='Total Libraries vs State Population')
+
+t3 = sns.lmplot(x='TOTAL_LIB', y='TOTSTAFF', data=df)
+t3.set(xlabel='Total Libraries', ylabel='Total Staff', title= 'Total Libraries vs Total Staff')
