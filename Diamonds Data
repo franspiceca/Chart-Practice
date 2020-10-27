@@ -1,3 +1,22 @@
 from seaborn import load_dataset
 dfdi = load_dataset("diamonds")
 dfdi.head()
+
+##draw a box plot that displays the distributions of the three columns x, y, and z in dfdi
+import matplotlib.pyplot as plt
+import pandas as pd
+
+dfdi[["x", "y", "z"]].plot(kind="box", grid=True, figsize=(15,10))
+plt.show()
+
+##draw a histogram that plots the cumulative distribution of price in dfdi with 10 bins
+import matplotlib.pyplot as plt
+
+dfdi.price.plot(kind="hist", bins=10, cumulative=True, grid=True, figsize=(15,10))
+plt.show()
+
+##draw a scatter matrix of the dataframe with the 7 columns carat, depth, table, price, x, y, and z
+import matplotlib.pyplot as plt
+
+pd.plotting.scatter_matrix(dfdi[["carat", "depth", "table", "price", "x", "y", "z"]], figsize=(10,10), diagonal="kde")
+plt.show()
