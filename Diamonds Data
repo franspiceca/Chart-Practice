@@ -20,3 +20,21 @@ import matplotlib.pyplot as plt
 
 pd.plotting.scatter_matrix(dfdi[["carat", "depth", "table", "price", "x", "y", "z"]], figsize=(10,10), diagonal="kde")
 plt.show()
+
+##draw a boxplot with darkgrid style that displays the distributon of prices by cut
+import matplotlib.pyplot as plt
+import seaborn as sns
+import numpy as np
+from scipy import stats
+from matplotlib.pyplot import figure
+
+sns.set(style="darkgrid")
+sns.boxplot(x="price", y="cut", data=dfdi)
+plt.figure(figsize=(10,5))
+plt.show()
+
+##draw one interactive plot that contains histograms with 10 bins for carat, depth, and table
+import plotly.express as px
+
+fig = px.histogram(dfdi[['carat', 'depth', 'table']], nbins=10)
+fig.show()
