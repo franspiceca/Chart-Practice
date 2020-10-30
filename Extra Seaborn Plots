@@ -38,3 +38,12 @@ df.head()
 ##Add column to look at how many total libaries there are
 df['TOTAL_LIB'] = df['CENTLIB'] + df['BRANLIB'] + df['BKMOB']
 df.head()
+
+##Seaborn boxplot of Bookmobiles
+sns.set(style="darkgrid")
+sns.boxplot(x="BKMOB", y="TOTINCM", width=0.6, data=df)
+plt.show()
+
+##Seaborn distribution plot of Total Libaries
+sns.distplot(df.TOTAL_LIB, rug=True, kde=True)
+plt.show()
