@@ -1,0 +1,24 @@
+import pandas as pd
+import numpy as np
+
+##Reading file, Converting dates to datetime format and series
+series = pd.read_csv("pls_fy18_state_pud18i.csv", parse_dates=True, squeeze=True)
+
+series.head()
+
+##Simplifying dataframe to look at specific variables
+series = series[['STABR', 'POPU_ST', 'CENTLIB', 'BRANLIB', 'BKMOB', 'TOTSTAFF', 'TOTINCM']]
+series.head()
+
+##Add column to look at how many total libaries there are
+series['TOTAL_LIB'] = series['CENTLIB'] + series['BRANLIB'] + series['BKMOB']
+series.head()
+
+##Setting up my series
+series2 = series[['TOTINCM', 'TOTAL_LIB']]
+
+series2.head()
+
+##Time series plot with the data I used
+series2.plot(kind="bar", title="Total Funding & Total Libaries by US Owned Territory/State", figsize=(15,7))
+plt.show()
