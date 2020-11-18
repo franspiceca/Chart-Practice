@@ -45,3 +45,15 @@ ns.swarmplot(x='carat', y='price', data=dfdi)
 plt.xlabel('carat')
 plt.ylabel('price in dollars')
 plt.show()
+
+##ECDF plot practice with user defined function
+import numpy as np
+
+def diamondsplot(dfdi):
+  #Number of data points
+  n = len(dfdi)
+  #x values sorted
+  x = np.sort(dfdi)
+  #y values for function
+  y = np.arange(1, n+1)/n
+  return x, y
