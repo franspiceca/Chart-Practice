@@ -38,3 +38,10 @@ import plotly.express as px
 
 fig = px.histogram(dfdi[['carat', 'depth', 'table']], nbins=10)
 fig.show()
+
+##Beeswarm plot with diamonds data set/seaborn
+sns.set_theme(style="darkgrid")
+ns.swarmplot(x='carat', y='price', data=dfdi)
+plt.xlabel('carat')
+plt.ylabel('price in dollars')
+plt.show()
