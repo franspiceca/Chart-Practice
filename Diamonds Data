@@ -57,3 +57,9 @@ def diamondsplot(dfdi):
   #y values for function
   y = np.arange(1, n+1)/n
   return x, y
+
+##ECDF with labeled axises
+plt.plot(carat, price, marker='.', linestyle='none')
+plt.xlabel('Carat', size = 14)
+plt.ylabel('Price', size = 14)
+plt.show()
